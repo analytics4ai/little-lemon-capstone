@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LittleLemonDB - Entity Relationship Diagram (3NF)</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f8; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+  h1 { color: #2c3e50; margin-bottom: 5px; }
+  p { color: #555; margin-bottom: 20px; }
+  .canvas { background: #ffffff; border: 1px solid #d1d5db; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 20px; }
+</style>
+</head>
+<body>
+  <h1>LittleLemonDB — Relational ER Diagram (3NF)</h1>
+  <p>Entity-Relationship Schema showing Primary Keys (PK), Foreign Keys (FK), and Cardinality</p>
+  <div class="canvas">
+    <svg width="920" height="520" xmlns="http://www.w3.org/2000/svg">
+      <!-- Connecting Lines -->
+      <line x1="250" y1="120" x2="350" y2="120" stroke="#4b5563" stroke-width="2" />
+      <text x="260" y="112" font-size="12" fill="#374151">1</text>
+      <text x="330" y="112" font-size="12" fill="#374151">0..*</text>
+
+      <line x1="250" y1="220" x2="350" y2="270" stroke="#4b5563" stroke-width="2" />
+      <text x="260" y="215" font-size="12" fill="#374151">1</text>
+      <text x="325" y="260" font-size="12" fill="#374151">0..*</text>
+
+      <line x1="250" y1="390" x2="350" y2="340" stroke="#4b5563" stroke-width="2" />
+      <text x="260" y="380" font-size="12" fill="#374151">1</text>
+      <text x="325" y="340" font-size="12" fill="#374151">0..*</text>
+
+      <line x1="580" y1="310" x2="670" y2="310" stroke="#4b5563" stroke-width="2" />
+      <text x="590" y="302" font-size="12" fill="#374151">1</text>
+      <text x="645" y="302" font-size="12" fill="#374151">0..1</text>
+
+      <!-- Customers Table -->
+      <rect x="30" y="50" width="220" height="190" rx="6" fill="#ffffff" stroke="#1e40af" stroke-width="2"/>
+      <rect x="30" y="50" width="220" height="32" rx="6" fill="#1e40af"/>
+      <text x="45" y="71" fill="#ffffff" font-weight="bold" font-size="14">Customers</text>
+      <text x="45" y="102" fill="#b45309" font-weight="bold" font-size="12">🔑 CustomerID (VARCHAR PK)</text>
+      <text x="45" y="124" fill="#1f2937" font-size="12">CustomerName (VARCHAR)</text>
+      <text x="45" y="146" fill="#1f2937" font-size="12">City (VARCHAR)</text>
+      <text x="45" y="168" fill="#1f2937" font-size="12">Country (VARCHAR)</text>
+      <text x="45" y="190" fill="#1f2937" font-size="12">PostalCode (VARCHAR)</text>
+      <text x="45" y="212" fill="#1f2937" font-size="12">CountryCode (VARCHAR)</text>
+
+      <!-- MenuItems Table -->
+      <rect x="30" y="290" width="220" height="200" rx="6" fill="#ffffff" stroke="#047857" stroke-width="2"/>
+      <rect x="30" y="290" width="220" height="32" rx="6" fill="#047857"/>
+      <text x="45" y="311" fill="#ffffff" font-weight="bold" font-size="14">MenuItems</text>
+      <text x="45" y="342" fill="#b45309" font-weight="bold" font-size="12">🔑 MenuItemID (INT PK)</text>
+      <text x="45" y="364" fill="#1f2937" font-size="12">CourseName (VARCHAR)</text>
+      <text x="45" y="386" fill="#1f2937" font-size="12">CuisineName (VARCHAR)</text>
+      <text x="45" y="408" fill="#1f2937" font-size="12">StarterName (VARCHAR)</text>
+      <text x="45" y="430" fill="#1f2937" font-size="12">DesertName (VARCHAR)</text>
+      <text x="45" y="452" fill="#1f2937" font-size="12">Drink (VARCHAR)</text>
+      <text x="45" y="474" fill="#1f2937" font-size="12">Sides (VARCHAR)</text>
+
+      <!-- Bookings Table -->
+      <rect x="350" y="50" width="230" height="145" rx="6" fill="#ffffff" stroke="#6d28d9" stroke-width="2"/>
+      <rect x="350" y="50" width="230" height="32" rx="6" fill="#6d28d9"/>
+      <text x="365" y="71" fill="#ffffff" font-weight="bold" font-size="14">Bookings</text>
+      <text x="365" y="102" fill="#b45309" font-weight="bold" font-size="12">🔑 BookingID (INT PK)</text>
+      <text x="365" y="124" fill="#1d4ed8" font-size="12">🔗 CustomerID (VARCHAR FK)</text>
+      <text x="365" y="146" fill="#1f2937" font-size="12">BookingDate (DATE)</text>
+      <text x="365" y="168" fill="#1f2937" font-size="12">TableNumber (INT)</text>
+
+      <!-- Orders Table -->
+      <rect x="350" y="230" width="230" height="235" rx="6" fill="#ffffff" stroke="#b91c1c" stroke-width="2"/>
+      <rect x="350" y="230" width="230" height="32" rx="6" fill="#b91c1c"/>
+      <text x="365" y="251" fill="#ffffff" font-weight="bold" font-size="14">Orders</text>
+      <text x="365" y="282" fill="#b45309" font-weight="bold" font-size="12">🔑 OrderID (VARCHAR PK)</text>
+      <text x="365" y="304" fill="#1f2937" font-size="12">OrderDate (DATE)</text>
+      <text x="365" y="326" fill="#1d4ed8" font-size="12">🔗 CustomerID (VARCHAR FK)</text>
+      <text x="365" y="348" fill="#1d4ed8" font-size="12">🔗 MenuItemID (INT FK)</text>
+      <text x="365" y="370" fill="#1f2937" font-size="12">Quantity (INT)</text>
+      <text x="365" y="392" fill="#1f2937" font-size="12">Cost (DECIMAL)</text>
+      <text x="365" y="414" fill="#1f2937" font-size="12">Sales (DECIMAL)</text>
+      <text x="365" y="436" fill="#1f2937" font-size="12">Discount (DECIMAL)</text>
+
+      <!-- OrderDeliveryStatus Table -->
+      <rect x="670" y="230" width="225" height="170" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+      <rect x="670" y="230" width="225" height="32" rx="6" fill="#0f766e"/>
+      <text x="685" y="251" fill="#ffffff" font-weight="bold" font-size="14">OrderDeliveryStatus</text>
+      <text x="685" y="282" fill="#b45309" font-weight="bold" font-size="12">🔑 DeliveryID (INT PK)</text>
+      <text x="685" y="304" fill="#1d4ed8" font-size="12">🔗 OrderID (VARCHAR FK)</text>
+      <text x="685" y="326" fill="#1f2937" font-size="12">DeliveryDate (DATE)</text>
+      <text x="685" y="348" fill="#1f2937" font-size="12">DeliveryCost (DECIMAL)</text>
+      <text x="685" y="370" fill="#1f2937" font-size="12">Status (VARCHAR)</text>
+    </svg>
+  </div>
+</body>
+</html>
